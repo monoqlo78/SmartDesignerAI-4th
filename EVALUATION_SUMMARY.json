@@ -1,0 +1,86 @@
+{
+  "model_name": "SmartDesignerAI-4th",
+  "model_id": "smartdesigner-ai-4th-astra",
+  "model_codename": "SD-Qwen3-4B-Astra-Opus55-Class-V4",
+  "version": "4.0.0",
+  "adr": "docs/adr/0729-smartdesigner-4th-astra-opus-omni-agent.md",
+  "task_id": "T-11580",
+  "benchmarks": {
+    "astra_agent_bench_v4": {
+      "passed": 10,
+      "total": 10,
+      "accuracy": 1.0,
+      "tasks": [
+        {
+          "id": "astra-tool-01",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-02",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-03",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-04",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-05",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-06",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-07",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-08",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-09",
+          "passed": true
+        },
+        {
+          "id": "astra-tool-10",
+          "passed": true
+        }
+      ]
+    },
+    "multimodal_vision_ocr_and_layout": {
+      "passed": true
+    },
+    "multimodal_audio_asr_and_tts": {
+      "passed": true
+    },
+    "autonomous_workspace_self_repair": {
+      "passed": true,
+      "files_modified": [
+        "src/math_utils.py",
+        "src/paginator.py"
+      ],
+      "verification_passed": true
+    },
+    "copilot_harness_contract": {
+      "passed": true
+    },
+    "inherited_149_panel": {
+      "grounded_23": "23/23 (100.0%)",
+      "fresh_96": "96/96 (100.0%)",
+      "sol_bench_ja_30": "30/30 (100.0%)"
+    }
+  },
+  "hashes": {
+    "omni_agent_v4_sha256": "f2e198e8e43193bf305bfb2f64e33b6773789ee62aae5c307d0ec02692b942d1",
+    "omni_perception_v4_sha256": "a3351facdb8585048530a34fc9e65644864a7ec1cb01790254534b49651ddca4",
+    "openai_compat_sha256": "0dd1c723ef66e1e478fe5760b01b4a00806c37fd6f05c42bcbeb3f8460bd47bb",
+    "copilot_bridge_sha256": "a31d386809639cc06f61d51479475e7e69c6939261e5dc852b12eba339955009",
+    "astra_agent_bench_v4_sha256": "bd0ef20ca1def5e62784634bc1ce87b3c05d6d34ade70e1f6a74fa3255c1b43b"
+  }
+}

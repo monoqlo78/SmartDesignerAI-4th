@@ -1,0 +1,19 @@
+[
+  {
+    "name": "SmartDesignerAI-4th",
+    "vendor": "customendpoint",
+    "apiKey": "${input:smartdesignerApiKey}",
+    "apiType": "chat-completions",
+    "models": [
+      {
+        "id": "smartdesigner-ai-4th-astra",
+        "name": "SmartDesignerAI-4th (Astra / Opus 5.5 Class)",
+        "url": "http://127.0.0.1:8787/v1/chat/completions",
+        "toolCalling": true,
+        "vision": true,
+        "maxInputTokens": 32768,
+        "maxOutputTokens": 4096
+      }
+    ]
+  }
+]

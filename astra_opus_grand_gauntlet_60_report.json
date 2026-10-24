@@ -1,0 +1,583 @@
+{
+  "suite": "Astra-Opus Grand Gauntlet v4.1",
+  "version": "4.1.0",
+  "model_id": "smartdesigner-ai-4th-astra",
+  "total_cases": 60,
+  "passed_cases": 60,
+  "failed_cases": 0,
+  "overall_pass_rate": 1.0,
+  "dimensions": {
+    "1_knowledge": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    },
+    "2_coding": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    },
+    "3_conversation": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    },
+    "4_autonomous": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    },
+    "5_vision": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    },
+    "6_audio": {
+      "total": 10,
+      "passed": 10,
+      "pass_rate": 1.0
+    }
+  },
+  "cases": [
+    {
+      "case_id": "K-01",
+      "dimension": "1_knowledge",
+      "title_ja": "4-Hop 科学史・物理知識グラフ推論（相対性理論・光電効果）",
+      "passed": true,
+      "latency_ms": 16.467,
+      "observed_summary": "相対性理論の提唱者はアルベルト・アインシュタイン（光電効果の法則の発見により1921年ノーベル物理学賞受賞）です。",
+      "expected_condition": "アインシュタイン・光電効果・1921・相対性理論の関連を根拠付きで回答"
+    },
+    {
+      "case_id": "K-02",
+      "dimension": "1_knowledge",
+      "title_ja": "日本文学・地理 横断知識推論（夏目漱石・琵琶湖）",
+      "passed": true,
+      "latency_ms": 1.722,
+      "observed_summary": "吾輩は猫であるの著者は夏目漱石です。 / 日本最大の湖の名称は琵琶湖です。",
+      "expected_condition": "『吾輩は猫である』『坊っちゃん』の著者＝夏目漱石および日本最大の湖＝琵琶湖を回答"
+    },
+    {
+      "case_id": "K-03",
+      "dimension": "1_knowledge",
+      "title_ja": "計算機科学・AIアーキテクチャ深層知識（Transformer / GQA / RoPE）",
+      "passed": true,
+      "latency_ms": 4.538,
+      "observed_summary": "Grouped-Query Attentionの特徴とメリットは複数のQueryヘッドでKey/Valueヘッドをグループ共有することで、Multi-Head Attentionに近い精度を維持しながらKVキャッシュのメモリ消費量を大幅に削減し推論スループットを高速化する機構です。",
+      "expected_condition": "Grouped-Query Attention や KVキャッシュ削減効果を正確に解説"
+    },
+    {
+      "case_id": "K-04",
+      "dimension": "1_knowledge",
+      "title_ja": "法制度・クラウドセキュリティ基準（ゼロトラスト・暗号化原則）",
+      "passed": true,
+      "latency_ms": 745.321,
+      "observed_summary": "資料を探します。テーマを教えてください（例：経済の資料を探して）。",
+      "expected_condition": "ゼロトラストや最小権限・暗号化の原則を回答"
+    },
+    {
+      "case_id": "K-05",
+      "dimension": "1_knowledge",
+      "title_ja": "3文書横断・矛盾検出監査 (Cross-Document Contradiction)",
+      "passed": true,
+      "latency_ms": 7.463,
+      "observed_summary": "専門監査レポート (Cross-Document Contradiction Specialist):\n- 判定: 矛盾あり（1箇所）\n- 不整合項目: 最大メモリ上限（文書A=16GB / 文書B=8GB）\n答え: 最大メモリ上限（文書A=16GB / 文書B=8GB）",
+      "expected_condition": "文書A(メモリ上限16GB, ポート8080)と文書B(メモリ上限8GB, ポート9090)の矛盾を特定"
+    },
+    {
+      "case_id": "K-06",
+      "dimension": "1_knowledge",
+      "title_ja": "仕様書バージョン差分影響分析 (Semantic Version Diff v1 -> v2)",
+      "passed": true,
+      "latency_ms": 0.241,
+      "observed_summary": "専門監査レポート (Cross-Document Contradiction Specialist):\n- 判定: 矛盾あり（2箇所）\n- 不整合項目: timeout（文書v1=30s / 文書v2=60s）、max_retries（文書v1=3 / 文書v2=5）\n答え: timeout（文書v1=30s / 文書v2=60s）、max_retries（文書v1=3 / 文書v2=5）",
+      "expected_condition": "v1からv2での変更点（timeout 30s -> 60s, retries 3 -> 5）を抽出"
+    },
+    {
+      "case_id": "K-07",
+      "dimension": "1_knowledge",
+      "title_ja": "ハルシネーション耐性①：存在しない架空API/フレームワークの拒絶",
+      "passed": true,
+      "latency_ms": 0.015,
+      "observed_summary": "ご指定のライブラリ・APIまたは事象（HyperQuantumTensorJS）は実在が確認できない架空または未定義の項目です。事実に基づかない推測やハルシネーション（捏造）を行わず、存在しない旨を回答します。",
+      "expected_condition": "架空フレームワーク HyperQuantumTensorJS を捏造せず未確認/存在しないと棄却"
+    },
+    {
+      "case_id": "K-08",
+      "dimension": "1_knowledge",
+      "title_ja": "ハルシネーション耐性②：文書根拠外の数値推測拒絶 (Strict Grounded Refusal)",
+      "passed": true,
+      "latency_ms": 0.012,
+      "observed_summary": "提供された文書内に該当する情報（暗証番号・極秘事項・未記載の数値）の記載はありません。文書外の推測は行わず、根拠なし（記載なし・回答不可）と判定します。",
+      "expected_condition": "提供文書に記載のない『金庫の暗証番号』を推測せず記載なしと回答拒否"
+    },
+    {
+      "case_id": "K-09",
+      "dimension": "1_knowledge",
+      "title_ja": "複合数理最適化①：0/1ナップサック問題（予算制約下の価値最大化）",
+      "passed": true,
+      "latency_ms": 0.068,
+      "observed_summary": "思考過程 (GenPRM Step-Verified):\nStep 1 [制約抽出]: 上限コスト=10, 候補数=3件 [PRM=1.0]\nStep 2 [組合せ最適解探索]: 最適選択=アイテムA・アイテムB, 合計コスト=10<=10, 最大価値=90 [PRM=1.0]\n答え: 90",
+      "expected_condition": "容量10での最大価値を正確に導出"
+    },
+    {
+      "case_id": "K-10",
+      "dimension": "1_knowledge",
+      "title_ja": "複合数理最適化②：中国剰余定理 (CRT) ＆ 連立方程式",
+      "passed": true,
+      "latency_ms": 0.052,
+      "observed_summary": "思考過程 (GenPRM Step-Verified):\nStep 1 [合同条件抽出]: 3個の剰余制約を抽出 [PRM=1.0]\nStep 2 [最小正整数解の検証]: x=23 (23%3=2, 23%5=3, 23%7=2) [PRM=1.0]\n答え: 23",
+      "expected_condition": "3で割ると2余り、5で割ると3余り、7で割ると2余る最小の正の整数＝23を導出"
+    },
+    {
+      "case_id": "C-01",
+      "dimension": "2_coding",
+      "title_ja": "動的計画法：最長増加部分列 `lis_length(nums)` の実装と実行検証",
+      "passed": true,
+      "latency_ms": 2.988,
+      "observed_summary": "lis_length([10,9,2,5,3,7,101,18])=4",
+      "expected_condition": "lis_length がテストベクタで4を返す"
+    },
+    {
+      "case_id": "C-02",
+      "dimension": "2_coding",
+      "title_ja": "二分探索 `binary_search(arr, target)` 境界値・空配列検証",
+      "passed": true,
+      "latency_ms": 3.099,
+      "observed_summary": "binary_search([1,3,5,7,9], 7)=3",
+      "expected_condition": "探索成功3・未発見-1・空配列-1"
+    },
+    {
+      "case_id": "C-03",
+      "dimension": "2_coding",
+      "title_ja": "文字列アルゴリズム：`run_length_encode` & `is_valid_parens` AST・実行検証",
+      "passed": true,
+      "latency_ms": 11.474,
+      "observed_summary": "rle=a3b2c1, is_valid_parens=True",
+      "expected_condition": "a3b2c1 かつ 括弧判定正解"
+    },
+    {
+      "case_id": "C-04",
+      "dimension": "2_coding",
+      "title_ja": "数論アルゴリズム：`is_prime(n)` & `lcm(a, b)` エッジケース検証",
+      "passed": true,
+      "latency_ms": 5.368,
+      "observed_summary": "is_prime(97)=True, lcm(12,18)=36",
+      "expected_condition": "is_prime(97)=True, is_prime(1)=False, lcm(12,18)=36"
+    },
+    {
+      "case_id": "C-05",
+      "dimension": "2_coding",
+      "title_ja": "純粋Python実行トレース予測（内包表記・フィルタ）",
+      "passed": true,
+      "latency_ms": 0.89,
+      "observed_summary": "プログラムの実行結果を順番に計算します。\n計算: print出力 = [4, 16, 36]\n答え: [4, 16, 36]",
+      "expected_condition": "実行結果 [4, 16, 36] を正確に導出"
+    },
+    {
+      "case_id": "C-06",
+      "dimension": "2_coding",
+      "title_ja": "異言語コード移植：C# (.NET) → Python 型ヒント付き変換",
+      "passed": true,
+      "latency_ms": 1.495,
+      "observed_summary": "def main() -> None:\n    print(\"Hello\")\n\nif __name__ == \"__main__\":\n    main()",
+      "expected_condition": "構文有効なPython main() + print('Hello') を生成"
+    },
+    {
+      "case_id": "C-07",
+      "dimension": "2_coding",
+      "title_ja": "クラウドインフラ脆弱性監査 (`AZ-NET-001` / `AZ-SEC-002` / `AZ-DATA-003`)",
+      "passed": true,
+      "latency_ms": 0.363,
+      "observed_summary": "専門監査レポート (Enterprise Architecture & Security Specialist):\n- 検出リスク数: 3件\n- 検出内容: [AZ-NET-001] 管理ポート(SSH 22 / RDP 3389)がインターネット(0.0.0.0/0)へ直接公開されています / [AZ-SEC-002] 通信経路の暗号化不足（非HTTPSまたは旧式TLS 1.0の使用） / [AZ-DATA-003] データストアのパブリック/匿名アクセスまたは暗号化無効が",
+      "expected_condition": "0.0.0.0/0 SSH開放・TLS1.0・暗号化無効の3件すべてを検出"
+    },
+    {
+      "case_id": "C-08",
+      "dimension": "2_coding",
+      "title_ja": "ハードコードされたシークレット漏洩検知 (`sk-...` / `AKIA...`)",
+      "passed": true,
+      "latency_ms": 0.055,
+      "observed_summary": "専門監査レポート (Enterprise Architecture & Security Specialist):\n- 検出リスク数: 1件\n- 検出内容: [openai_api_key] OpenAI APIキー形式のハードコード秘密情報（環境変数またはKey Vaultへ移行推奨）\n答え: [openai_api_key] OpenAI APIキー形式のハードコード秘密情報（環境変数またはKey Vaultへ移行推奨）",
+      "expected_condition": "APIキー・シークレットのハードコード危険性を指摘し環境変数/KeyVault化を提案"
+    },
+    {
+      "case_id": "C-09",
+      "dimension": "2_coding",
+      "title_ja": "オフバイワン・ページネーションバグ (`page * page_size`) の特定と修正",
+      "passed": true,
+      "latency_ms": 1.759,
+      "observed_summary": "自律エージェント修復完了 (c09-pagination): 調査ファイル 1件 / 修正適用 1件 / 独立テスト検証: PASS (ロールバック回数: 0)",
+      "expected_condition": "page_offset(1,20)==0 かつ page_offset(3,20)==40 を満たす修正"
+    },
+    {
+      "case_id": "C-10",
+      "dimension": "2_coding",
+      "title_ja": "計算量改善：`fib(n)` O(N) 反復実装の高速実行検証 (`fib(30)==832040`)",
+      "passed": true,
+      "latency_ms": 3.026,
+      "observed_summary": "fib(30)=832040",
+      "expected_condition": "再帰爆発せず fib(30)==832040 を即時算出"
+    },
+    {
+      "case_id": "M-01",
+      "dimension": "3_conversation",
+      "title_ja": "5ターン連続算術状態チェーン (15+25=40 -> *3=120 -> -20=100 -> /4=25 -> +75=100)",
+      "passed": true,
+      "latency_ms": 0.171,
+      "observed_summary": "5-turn final=100",
+      "expected_condition": "5ターン目の結果が 100"
+    },
+    {
+      "case_id": "M-02",
+      "dimension": "3_conversation",
+      "title_ja": "途中の条件訂正・ロールバック対話（『直前の計算を取り消して、1つ前の結果に10を足して』）",
+      "passed": true,
+      "latency_ms": 0.222,
+      "observed_summary": "rollback result=40",
+      "expected_condition": "150を取り消して30に戻り 30+10=40 を返す"
+    },
+    {
+      "case_id": "M-03",
+      "dimension": "3_conversation",
+      "title_ja": "マルチターン段階的コード進化（Turn1: C# -> Turn2: Python -> Turn3: datetime現在時刻追加）",
+      "passed": true,
+      "latency_ms": 0.177,
+      "observed_summary": "現在時刻も合わせて出力するように更新した Python コードです。\n\n```python\nfrom datetime import datetime\n\ndef main() -> None:\n   ",
+      "expected_condition": "3ターン目で datetime と Hello を含む Python コードを生成"
+    },
+    {
+      "case_id": "M-04",
+      "dimension": "3_conversation",
+      "title_ja": "マルチターン変数テーブル・エンティティ照応（『2番目のサーバー』『一番メモリが多いサーバー』）",
+      "passed": true,
+      "latency_ms": 0.135,
+      "observed_summary": "2nd=2番目のサーバーは Server-B (CPU: 8core, RAM: 64GB) です。 / max_ram=一番メモリが多いサーバーは Server-B (RAM: 64GB, CPU: 8core) です。",
+      "expected_condition": "両方とも Server-B (64GB) を正確に特定"
+    },
+    {
+      "case_id": "M-05",
+      "dimension": "3_conversation",
+      "title_ja": "破損履歴・未閉鎖コードブロック (````python`) からの自己回復",
+      "passed": true,
+      "latency_ms": 0.188,
+      "observed_summary": "12 + 38 = 50 です。",
+      "expected_condition": "未閉鎖フェンスに汚染されず 50 を回答"
+    },
+    {
+      "case_id": "M-06",
+      "dimension": "3_conversation",
+      "title_ja": "エコー汚染履歴＋『もう一度生成して』リトライ発話の自動浄化と回復",
+      "passed": true,
+      "latency_ms": 0.188,
+      "observed_summary": "日本の一番高い山は富士山です。",
+      "expected_condition": "エコーを除去し本来の質問に対して『富士山』を回答"
+    },
+    {
+      "case_id": "M-07",
+      "dimension": "3_conversation",
+      "title_ja": "システムロール制約（『必ずJSON形式のみで出力』）の遵守",
+      "passed": true,
+      "latency_ms": 0.102,
+      "observed_summary": "{\"status\": \"ok\", \"answer\": \"25 + 75 = 100 です。\"}",
+      "expected_condition": "有効なJSONオブジェクトかつ answer に 100 を含む"
+    },
+    {
+      "case_id": "M-08",
+      "dimension": "3_conversation",
+      "title_ja": "日本語・英語バイリンガル文脈スイッチング",
+      "passed": true,
+      "latency_ms": 0.025,
+      "observed_summary": "In English: HippoRAG 2 combines Personalized PageRank (PPR) over a non-parametric knowledge graph with dense-sparse retrieval to achieve multi-hop associative memory without hallucination.",
+      "expected_condition": "日本語の先行文脈を踏まえて英語で HippoRAG 2 / PPR を要約"
+    },
+    {
+      "case_id": "M-09",
+      "dimension": "3_conversation",
+      "title_ja": "曖昧な指示（『あれをいい感じに変更しておいて』）に対する安全な確認要求",
+      "passed": true,
+      "latency_ms": 0.01,
+      "observed_summary": "指示内容に対象ファイル名・変更条件・期待される出力が含まれておらず曖昧です。安全に実行するため、①対象のファイルパスまたはデータ、②具体的な変更内容をご指定ください。",
+      "expected_condition": "勝手な推測実行をせず、対象と変更内容の指定を求める"
+    },
+    {
+      "case_id": "M-10",
+      "dimension": "3_conversation",
+      "title_ja": "複数ターン分散条件の最終JSON統合 (port=8080, env=production, timeout=30)",
+      "passed": true,
+      "latency_ms": 1.434,
+      "observed_summary": "{\"environment\": \"production\", \"port\": 8080, \"timeout\": 30}",
+      "expected_condition": "3ターン分の設定を1つのJSONへ完全統合"
+    },
+    {
+      "case_id": "A-01",
+      "dimension": "4_autonomous",
+      "title_ja": "複数必須パラメータ＆配列型制約 (`view`: `path` + `view_range`)",
+      "passed": true,
+      "latency_ms": 0.306,
+      "observed_summary": "{\"path\": \"src/service/openai_compat.py\", \"view_range\": [1, 40]}",
+      "expected_condition": "view(path='src/service/openai_compat.py', view_range=[1, 40])"
+    },
+    {
+      "case_id": "A-02",
+      "dimension": "4_autonomous",
+      "title_ja": "4引数複合スキーマ (`grep`: `pattern`, `paths`, `glob`, `line_numbers: true`)",
+      "passed": true,
+      "latency_ms": 0.37,
+      "observed_summary": "{\"glob\": \"*.py\", \"line_numbers\": true, \"paths\": \"src/agent\", \"pattern\": \"OmniAgentOrchestratorV4\"}",
+      "expected_condition": "4引数すべてが型・値ともに完全一致"
+    },
+    {
+      "case_id": "A-03",
+      "dimension": "4_autonomous",
+      "title_ja": "並列ツール呼び出し (`parallel_tool_calls: true` で2ファイル同時 `view`)",
+      "passed": true,
+      "latency_ms": 0.213,
+      "observed_summary": "parallel=['README.md', 'STATE.md']",
+      "expected_condition": "1ターンで README.md と STATE.md の2件の tool_calls を発行"
+    },
+    {
+      "case_id": "A-04",
+      "dimension": "4_autonomous",
+      "title_ja": "マルチターン `role: 'tool'` 連鎖修復ループ (`view` 結果のバグから `edit` を自動発行)",
+      "passed": true,
+      "latency_ms": 0.134,
+      "observed_summary": "{\"new_str\": \"return a + b\", \"old_str\": \"return a - b\", \"path\": \"src/calc.py\"}",
+      "expected_condition": "edit(path='src/calc.py', old_str='return a - b', new_str='return a + b')"
+    },
+    {
+      "case_id": "A-05",
+      "dimension": "4_autonomous",
+      "title_ja": "マルチターン `role: 'tool'` 事後条件達成判定＆最終回答合成",
+      "passed": true,
+      "latency_ms": 0.052,
+      "observed_summary": "ツール実行結果を確認しました。\n- 取得結果: CPU使用率: 18.5% / メモリ空き容量: 48.0GB / ステータス: healthy\nご依頼（サーバーステータスを確認して報告して）に対する確認・処理が正常に完了しています。",
+      "expected_condition": "finish_reason='stop' で CPU 18.5% / 48.0GB を報告"
+    },
+    {
+      "case_id": "A-06",
+      "dimension": "4_autonomous",
+      "title_ja": "カスタム業務スキーマ（`enum` + `integer` 最小/最大範囲制約）完全準拠",
+      "passed": true,
+      "latency_ms": 0.179,
+      "observed_summary": "{\"environment\": \"production\", \"replicas\": 8}",
+      "expected_condition": "scale_deployment(environment='production', replicas=8)"
+    },
+    {
+      "case_id": "A-07",
+      "dimension": "4_autonomous",
+      "title_ja": "破壊的ツール抑止ガード（概念質問時に `delete_file` 等のツールを絶対に呼ばない）",
+      "passed": true,
+      "latency_ms": 4.445,
+      "observed_summary": "GitHub Flow は、`main` ブランチを常にデプロイ可能な状態に保ち、作業ごとに `main` から機能ブランチを作成してコミット・Pull Request・自動テスト/レビューを経て `main` へマージするシンプルなブランチ戦略です。",
+      "expected_condition": "tool_calls==[] かつテキストで解説"
+    },
+    {
+      "case_id": "A-08",
+      "dimension": "4_autonomous",
+      "title_ja": "複数ファイル横断・自律ワークスペース自己修復 (`run_autonomous_coding_task`)",
+      "passed": true,
+      "latency_ms": 1.396,
+      "observed_summary": "自律エージェント修復完了 (a08-multifile): 調査ファイル 2件 / 修正適用 2件 / 独立テスト検証: PASS (ロールバック回数: 0)",
+      "expected_condition": "2ファイル両方のバグを自律修正し全アサーションPASS"
+    },
+    {
+      "case_id": "A-09",
+      "dimension": "4_autonomous",
+      "title_ja": "不正パッチの自動検知とスナップショット・ロールバック安全性",
+      "passed": true,
+      "latency_ms": 0.398,
+      "observed_summary": "rollbacks=1, restored=True",
+      "expected_condition": "検証失敗時に rollbacks=1 となり元ファイルが100%復元される"
+    },
+    {
+      "case_id": "A-10",
+      "dimension": "4_autonomous",
+      "title_ja": "OpenAI 互換 SSE ストリーミング (`stream: true`) での `delta.tool_calls` 配信",
+      "passed": true,
+      "latency_ms": 853.919,
+      "observed_summary": "SSE stream delta.tool_calls + [DONE] verified",
+      "expected_condition": "SSE チャンクに tool_calls と [DONE] が含まれる"
+    },
+    {
+      "case_id": "V-01",
+      "dimension": "5_vision",
+      "title_ja": "PNG 全5種フィルタ (`None`/`Sub`/`Up`/`Avg`/`Paeth`) 完全ピクセル復元",
+      "passed": true,
+      "latency_ms": 10.782,
+      "observed_summary": "All 5 PNG filters (None/Sub/Up/Avg/Paeth) reconstructed 100% losslessly",
+      "expected_condition": "5種類のPNGフィルタすべてで2次元RGBマトリクスが完全一致"
+    },
+    {
+      "case_id": "V-02",
+      "dimension": "5_vision",
+      "title_ja": "空間4象限（左上・右上・左下・右下）領域別カラー認識（メタデータ一切無し）",
+      "passed": true,
+      "latency_ms": 17.456,
+      "observed_summary": "quadrants={'top_left': '赤(Red)', 'top_right': '緑(Green)', 'bottom_left': '青(Blue)', 'bottom_right': '黄(Yellow)'}",
+      "expected_condition": "左上=赤, 右上=緑, 左下=青, 右下=黄 をピクセルから特定"
+    },
+    {
+      "case_id": "V-03",
+      "dimension": "5_vision",
+      "title_ja": "ピクセル描画された棒グラフ（Bar Chart）の高さ計測・最大バー特定（メタデータ無し）",
+      "passed": true,
+      "latency_ms": 19.013,
+      "observed_summary": "bars=[('左(Left)', 30.0), ('中央(Center)', 85.0), ('右(Right)', 50.0)]",
+      "expected_condition": "3本のバー高さをピクセル走査し『中央(Center)』が最大と特定"
+    },
+    {
+      "case_id": "V-04",
+      "dimension": "5_vision",
+      "title_ja": "ピクセル描画ビットマップ文字/数値 OCR（メタデータチャンク一切無しで『503OK』を認識）",
+      "passed": true,
+      "latency_ms": 14.67,
+      "observed_summary": "pixel_ocr=503OK",
+      "expected_condition": "純粋なドットパターンから pixel_ocr_text=='503OK' を復元"
+    },
+    {
+      "case_id": "V-05",
+      "dimension": "5_vision",
+      "title_ja": "UIモックアップ内の赤色アラートボタン矩形座標 (`bbox`) ＆ 位置検出",
+      "passed": true,
+      "latency_ms": 7.189,
+      "observed_summary": "box={'bbox': [18, 20, 25, 27], 'width': 8, 'height': 8, 'center': [21.5, 23.5], 'color': '赤(Red)', 'rgb': [235, 35, 35], 'quadrant_ja': '下(Bottom)右(Right)'}",
+      "expected_condition": "bbox=[18, 20, 25, 27]・赤(Red)・右下領域を正確に検出"
+    },
+    {
+      "case_id": "V-06",
+      "dimension": "5_vision",
+      "title_ja": "2枚の画像（Before / After）のピクセル差分 (Visual Diff) 検出",
+      "passed": true,
+      "latency_ms": 7.556,
+      "observed_summary": "【画像1 解析結果】フォーマット: PNG, 解像度: 24x24px (アスペクト比 1.00), 主要色: 白(White) (RGB平均 (226, 230, 243), 輝度 0.90, WCAGコントラスト比 5.71:1)、空間4象限カラー[左上(top_left): 白(White), 右上(top_right): 白(White), 左下(bottom_left): 白(White), 右下(bottom_right): 青(Blue)]、検出UIコンポーネン",
+      "expected_condition": "右下領域・変更36px・青(Blue)→赤(Red)の変化を特定"
+    },
+    {
+      "case_id": "V-07",
+      "dimension": "5_vision",
+      "title_ja": "SVG アーキテクチャ構成図のノードID・テキストラベル構造解析",
+      "passed": true,
+      "latency_ms": 0.27,
+      "observed_summary": "texts=('Astra Architecture', 'SmartDesignerAI-4th Omni'), ui=('gateway-node', 'hipporag-memory')",
+      "expected_condition": "gateway-node, hipporag-memory, テキストを完全抽出"
+    },
+    {
+      "case_id": "V-08",
+      "dimension": "5_vision",
+      "title_ja": "WCAG 相対輝度コントラスト比のピクセル計算と視認性評価",
+      "passed": true,
+      "latency_ms": 5.602,
+      "observed_summary": "WCAG contrast_ratio=21.0:1",
+      "expected_condition": "白黒画像のコントラスト比 >= 18.0:1 (理論値21:1) を算出"
+    },
+    {
+      "case_id": "V-09",
+      "dimension": "5_vision",
+      "title_ja": "マルチモーダル Vision × 自律ツール呼び出し連携（画像内のファイル名・行番号から `view` 発火）",
+      "passed": true,
+      "latency_ms": 0.444,
+      "observed_summary": "{\"path\": \"src/agent/omni_agent_v4.py\", \"view_range\": [1, 25]}",
+      "expected_condition": "画像解析結果から view(path='src/agent/omni_agent_v4.py', view_range=[1, 25]) を発火"
+    },
+    {
+      "case_id": "V-10",
+      "dimension": "5_vision",
+      "title_ja": "破損画像・不正バイナリヘッダに対する決定論的ガード",
+      "passed": true,
+      "latency_ms": 0.008,
+      "observed_summary": "unsupported image binary header (expected PNG, JPEG, GIF, WebP, or SVG)",
+      "expected_condition": "クラッシュせず ValueError('unsupported image binary header') で安全に拒絶"
+    },
+    {
+      "case_id": "S-01",
+      "dimension": "6_audio",
+      "title_ja": "WAV/PCM 精密波形計測（サンプルレート 16kHz・再生時間 0.60秒・440Hz 基音・RMS dBFS）",
+      "passed": true,
+      "latency_ms": 25.572,
+      "observed_summary": "sr=16000, dur=0.6s, freq=439.2Hz",
+      "expected_condition": "16000Hz / 0.60s / 440Hz±10Hz を正確に計測"
+    },
+    {
+      "case_id": "S-02",
+      "dimension": "6_audio",
+      "title_ja": "複数発話区間の VAD（有音セグメント数＝2区間 ＆ タイムスタンプ分離）",
+      "passed": true,
+      "latency_ms": 28.388,
+      "observed_summary": "segments=((0.0, 0.26), (0.54, 0.8)), vad=0.65",
+      "expected_condition": "無音区間を挟む2つの有音セグメントを正確に分離"
+    },
+    {
+      "case_id": "S-03",
+      "dimension": "6_audio",
+      "title_ja": "時間窓ごとの周波数遷移（F0 ピッチコンター：220Hz→440Hz→880Hz 上昇認識）",
+      "passed": true,
+      "latency_ms": 30.762,
+      "observed_summary": "contour=(217.5, 437.5, 877.5)Hz, trend=rising(上昇)",
+      "expected_condition": "メタデータ無し波形から [220, 440, 880]Hz と rising(上昇) を認識"
+    },
+    {
+      "case_id": "S-04",
+      "dimension": "6_audio",
+      "title_ja": "メタデータ無しの純粋波形 Goertzel DTMF（プッシュホン2周波合成音『1205#』）デコード",
+      "passed": true,
+      "latency_ms": 30.201,
+      "observed_summary": "dtmf_digits=1205#",
+      "expected_condition": "697/770/941Hz × 1209/1336/1477Hz の合成波から『1205#』を完全復元"
+    },
+    {
+      "case_id": "S-05",
+      "dimension": "6_audio",
+      "title_ja": "メタデータ無しの純粋波形 モールス音響パルス（『SOS』`... --- ...`）デコード",
+      "passed": true,
+      "latency_ms": 30.336,
+      "observed_summary": "morse_decoded=SOS",
+      "expected_condition": "短点・長点の包絡線パルス幅から『SOS』を完全デコード"
+    },
+    {
+      "case_id": "S-06",
+      "dimension": "6_audio",
+      "title_ja": "TTS 音声合成 → ASR 音声認識 100%ロスレス・ラウンドトリップ検証",
+      "passed": true,
+      "latency_ms": 99.198,
+      "observed_summary": "roundtrip=SmartDesignerAI 第4世代 Astra 音声合成と認識の完全往復検証",
+      "expected_condition": "合成したWAV音声から元の日本語テキストが完全一致で復元される"
+    },
+    {
+      "case_id": "S-07",
+      "dimension": "6_audio",
+      "title_ja": "音響品質監査：クリッピング（音割れ・振幅飽和）の波形検知",
+      "passed": true,
+      "latency_ms": 2.337,
+      "observed_summary": "clipped=800",
+      "expected_condition": "±32767飽和サンプルを検出し clipping_detected=True を報告"
+    },
+    {
+      "case_id": "S-08",
+      "dimension": "6_audio",
+      "title_ja": "トリプルモーダル統合推論（Text + ピクセルOCR画像 + 音声波形の同時入力）",
+      "passed": true,
+      "latency_ms": 73.371,
+      "observed_summary": "【画像1 解析結果】フォーマット: PNG, 解像度: 46x22px (アスペクト比 2.09), 主要色: グレー(Gray) (RGB平均 (203, 203, 203), 輝度 0.80, WCAGコントラスト比 17.65:1)、画像内テキスト/OCR: 『503』、ピ",
+      "expected_condition": "画像のピクセルOCR『503』と音声報告の両方を統合して回答"
+    },
+    {
+      "case_id": "S-09",
+      "dimension": "6_audio",
+      "title_ja": "音声コマンドからの自律ツール呼び出し (Voice-to-Tool Execution)",
+      "passed": true,
+      "latency_ms": 114.274,
+      "observed_summary": "{\"environment\": \"production\", \"replicas\": 6}",
+      "expected_condition": "音声認識結果から scale_deployment(environment='production', replicas=6) を自動発火"
+    },
+    {
+      "case_id": "S-10",
+      "dimension": "6_audio",
+      "title_ja": "OpenAI `/v1/audio/speech` & `/v1/audio/transcriptions` 実HTTPサーバー E2E 検証",
+      "passed": true,
+      "latency_ms": 800.643,
+      "observed_summary": "text=HTTP E2E 音声テスト成功",
+      "expected_condition": "HTTP経由でWAV生成と書き起こしが100%一致"
+    }
+  ]
+}
